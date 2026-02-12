@@ -4,22 +4,29 @@
  *
  * @format
  */
-
+import "./global.css";
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { HeroUINativeProvider } from 'heroui-native/provider';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import HeroComponent from "./src/HeroComponent";
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
+    // <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+      <HeroUINativeProvider>{/* Your app content */}
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+      <HeroComponent />
+      </HeroUINativeProvider>
+      </GestureHandlerRootView>
+    // </SafeAreaProvider>
   );
 }
 
